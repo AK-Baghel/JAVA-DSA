@@ -1,3 +1,4 @@
+package recursion;
 public class increasingNoRecursion {
     public static void increase(int n){
         if(n==1){
