@@ -1,5 +1,3 @@
-package recursion;
-// import java.util.*;
 public class factorialRecursion {
     public static int fact(int n){
         if(n==1)
