@@ -1,52 +1,51 @@
-public class mergesorting{
-    public static void print(int arr[]){
-        for(int i=0;i<arr.length;i++){
-            System.out.print(arr[i]+" ");
-        }
-    }
-    public static void mergesort(int arr[],int s,int e){
-        if(s>=e){
-            return;
-        }
-        int mid=s+(e-s)/2;
-        mergesort(arr,s,mid);
-        mergesort(arr,mid+1,e);
-        merge(arr,s,mid,e);
-    }
-    public static void merge(int arr[],int s,int mid,int e){
-        int temp[]=new int[e-s];
-        int i=s;
-        int j=mid+1;
-        int k=0;
+public class mergesorting {
 
-        while(i<=mid && j<=e){
-            if(arr[i]<arr[j]){
-                temp[k]=arr[i];
+    public static void print(int arr[]) {
+        for (int i = 0; i < arr.length; i++)
+            System.out.print(arr[i] + " ");
+    }
+
+    public static void mergesort(int arr[], int si, int ei) {
+        if (si >= ei)
+            return;
+        int mid = si + (ei - si) / 2;
+        mergesort(arr, si, mid);
+        mergesort(arr, mid + 1, ei);
+        merge(arr, si, mid, ei);
+    }
+
+    public static void merge(int arr[], int si, int mid, int ei) {
+        int temp[] = new int[ei - si + 1];
+        int i = si;
+        int j = mid + 1;
+        int k = 0;
+
+        while (i <= mid && j <= ei) {
+            if (arr[i] < arr[j]) {
+                temp[k] = arr[i];
                 i++;
-            }
-            else{
-                temp[k]=arr[j];
+            } else {
+                temp[k] = arr[j];
                 j++;
-                
             }
             k++;
         }
 
-        while(i<=mid){
-            temp[k++]=arr[i++];
+        while (i <= mid) {
+            temp[k++] = arr[i++];
         }
-        while(j<=e){
-            temp[k++]=arr[j++];
-        }
-
-        for(int k=0,i=s;k<temp.length;k++,i++){
-            arr[i]=temp[k];
+        while (j <= ei) {
+            temp[k++] = arr[j++];
         }
 
+        for (k = 0, i = si; k < temp.length; k++, i++) {
+            arr[i] = temp[k];
+        }
     }
+
     public static void main(String[] args) {
-        int arr[]={23,12,55,3,98,90,1};
-        mergesort(arr,0,arr.length-1);
+        int arr[] = { 23, 12, 55, 3, 98, 90, 1 };
+        mergesort(arr, 0, arr.length - 1);
         print(arr);
     }
 }
