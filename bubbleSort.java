@@ -1,5 +1,4 @@
-import java.util.*;
-public class bubbleSort{
+public class bubbleSorting{
     public static void main(String[] args) {
         int arr[]={56,18,2,4,1,6,3,88,0};
         int n=arr.length;
@@ -17,6 +16,6 @@ public class bubbleSort{
                 break;
         }
         for(int i=0;i<arr.length;i++)
-            System.out.println(arr[i]);
+            System.out.print(arr[i]+" ");
     }
 }
