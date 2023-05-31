@@ -93,8 +93,21 @@ public class LinkedList {
         tail=temp;
         size--;
     }
+
+    public static void search(int key){
+        Node temp=head;
+        while(temp!=null){
+            if(temp.data==key){
+                System.out.println("Key is Found in LinkedList");
+                return;
+            }
+            temp=temp.next;
+        }
+        System.out.println("Not Found");
+    }
     public static void main(String[] args) {
         LinkedList ll=new LinkedList();
+
         ll.add(3);
         ll.add(2);
         ll.add(1);
@@ -106,8 +119,10 @@ public class LinkedList {
         ll.last(6);
 
         ll.removeFirst();
-        
+
         ll.removeLast();
+
+        ll.search(4);
 
         ll.print();
 
