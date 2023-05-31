@@ -9,6 +9,7 @@ public class LinkedList {
             this.next=null;
         }
     }
+
     public static Node head;
     public static Node tail;
     public static int size=0;
@@ -53,12 +54,25 @@ public class LinkedList {
         size++;
     }
 
+    public static void mid(int position,int data){
+        Node newNode=new Node(data);
+        Node temp=head;
+        int i=0;
+        while(i<position-1){
+            temp=temp.next;
+            i++;
+        }
+        newNode.next=temp.next;
+        temp.next=newNode;
+        size++;
+    }
 
     public static void main(String[] args) {
         LinkedList ll=new LinkedList();
         ll.add(3);
         ll.add(2);
         ll.add(1);
+        ll.mid(3,0);
         ll.last(4);
         ll.last(5);
         ll.last(6);
