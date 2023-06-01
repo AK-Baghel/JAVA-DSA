@@ -105,6 +105,19 @@ public class LinkedList {
         }
         System.out.println("Not Found");
     }
+
+    public static void reverse(){
+        Node curr=head;
+        Node prev=null;
+        Node next;
+        while(curr!=null){
+            next=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
+        head=prev;
+    }
     public static void main(String[] args) {
         LinkedList ll=new LinkedList();
 
@@ -124,6 +137,10 @@ public class LinkedList {
 
         ll.search(4);
 
+        ll.print();
+
+        ll.reverse();
+        System.out.print("Reverse LinkedList = ");
         ll.print();
 
         System.out.println("Size of LinkedList = "+size);
