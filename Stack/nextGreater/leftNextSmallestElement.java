@@ -1,6 +1,6 @@
-package Stack;
+package Stack.nextGreater;
 import java.util.*;
-public class rightNextSmallestElement {
+public class leftNextSmallestElement {
     public static void main(String[] args) {
         int arr[]={6,8,0,1,3};
         Stack<Integer> s=new Stack<>();

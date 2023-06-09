@@ -1,4 +1,4 @@
-package Stack;
+package Stack.nextGreater;
 
 import java.util.*;
 
