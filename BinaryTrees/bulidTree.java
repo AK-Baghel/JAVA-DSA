@@ -50,6 +50,18 @@ public class bulidTree {
             System.out.print(root.data + "->");
             inorder(root.right);
         }
+
+        // PREORDER TRAVERSAL
+        public static void postorder(Node root) {
+            if (root == null) {
+                // System.out.print(-1 + "->");
+                return;
+            }
+            postorder(root.left);
+            postorder(root.right);
+            System.out.print(root.data + "->");
+        }
+
     }
 
     public static void main(String[] args) {
@@ -65,5 +77,9 @@ public class bulidTree {
         System.out.println();
         System.out.print("Inorder traversal = ");
         tree.inorder(root);
+
+        System.out.println();
+        System.out.print("Postorder traversal = ");
+        tree.postorder(root);
     }
 }
