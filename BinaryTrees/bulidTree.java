@@ -99,6 +99,7 @@ public class bulidTree {
             return Math.max(lh,rh)+1;
         }
 
+        // COUNT OF NODES
         public static int count(Node root) {
             if(root==null){
                 return 0;
@@ -106,6 +107,15 @@ public class bulidTree {
             int leftCount=count(root.left);
             int rightCount=count(root.right);
             return leftCount+rightCount+1;
+        }
+
+        //SUM OF NODES
+        public static int sum(Node root){
+            if(root==null)
+                return 0;
+            int leftSum=sum(root.left);
+            int rightSum=sum(root.right);
+            return leftSum+rightSum+root.data;
         }
     }
 
@@ -141,6 +151,9 @@ public class bulidTree {
  
 
         System.out.println();
+        System.out.print("Sum of Nodes = ");
+        System.out.println(tree.sum(root));
 
+        System.out.println();
     }
 }
