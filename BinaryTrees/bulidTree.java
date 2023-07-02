@@ -117,7 +117,41 @@ public class bulidTree {
             int rightSum=sum(root.right);
             return leftSum+rightSum+root.data;
         }
+
+        //DIAMETER OF TREE T.C.=O(n^2)
+        public static int diameter(Node root){
+            if(root==null)
+                return 0;
+            int leftDiam=diameter(root.left);
+            int leftHt=height(root.left);
+            int rightDiam=diameter(root.right);
+            int rightHt=height(root.right);
+
+            int selfDiam=leftHt+rightHt+1;
+
+            return Math.max(Math.max(leftHt,rightHt),selfDiam);
+        }
+
     }
+    // DIAMETER OF TREE T.C.=O(n)
+    //     public static class Info{
+    //         int diam;
+    //         int ht;
+    //         public Info(int diam,int ht){
+    //             this.diam=diam;
+    //             this.ht=ht;
+    //         }
+    //     }
+    //     public static Info newdiameter(Node root){
+    //         if(root==null)
+    //             return new Info(0,0);
+    //         Info leftInfo=newdiameter(root.left);
+    //         Info rightInfo=newdiameter(root.right);
+
+    //         int diam=Math.max(Math.max(leftInfo.diam,rightInfo.diam),leftInfo.ht+rightInfo.ht+1);
+    //         int ht=Math.max(leftInfo.ht+rightInfo.ht)+1;
+    //         return new Info(diam,ht);
+    //     }
 
     public static void main(String[] args) {
         int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
@@ -155,5 +189,11 @@ public class bulidTree {
         System.out.println(tree.sum(root));
 
         System.out.println();
+        System.out.print("Diameter of Tree = ");
+        System.out.println(tree.diameter(root));
+
+        // System.out.println();
+        // System.out.print("Diameter of Tree = ");
+        // System.out.println(newdiameter(root).diam);
     }
 }
