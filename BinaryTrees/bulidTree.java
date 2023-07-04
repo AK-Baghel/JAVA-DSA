@@ -1,5 +1,8 @@
 package BinaryTrees;
+
 import java.util.*;
+
+
 public class bulidTree {
     public static class Node {
         int data;
@@ -63,95 +66,122 @@ public class bulidTree {
         }
 
         // LEVELORDER TRAVERSAL
-        public static void levelOrder(Node root){
-            if(root==null)
+        public static void levelOrder(Node root) {
+            if (root == null)
                 return;
 
-            Queue<Node> q=new LinkedList<>();
+            Queue<Node> q = new LinkedList<>();
             q.add(root);
             q.add(null);
 
-            while(!q.isEmpty()){
-                Node currNode=q.remove();
-                if(currNode==null){
+            while (!q.isEmpty()) {
+                Node currNode = q.remove();
+                if (currNode == null) {
                     System.out.println();
-                    if(q.isEmpty())
+                    if (q.isEmpty())
                         break;
-                    else    
+                    else
                         q.add(null);
-                }
-                else{
-                    System.out.print(currNode.data+" ");
-                    if(currNode.left!=null)
+                } else {
+                    System.out.print(currNode.data + " ");
+                    if (currNode.left != null)
                         q.add(currNode.left);
-                    if(currNode.right!=null)
+                    if (currNode.right != null)
                         q.add(currNode.right);
                 }
             }
         }
 
-        //HEIGHT OF A TREE
-        public static int height(Node root){
-            if(root==null)
+        // HEIGHT OF A TREE
+        public static int height(Node root) {
+            if (root == null)
                 return 0;
-            int lh=height(root.left);
-            int rh=height(root.right);
-            return Math.max(lh,rh)+1;
+            int lh = height(root.left);
+            int rh = height(root.right);
+            return Math.max(lh, rh) + 1;
         }
 
         // COUNT OF NODES
         public static int count(Node root) {
-            if(root==null){
+            if (root == null) {
                 return 0;
             }
-            int leftCount=count(root.left);
-            int rightCount=count(root.right);
-            return leftCount+rightCount+1;
+            int leftCount = count(root.left);
+            int rightCount = count(root.right);
+            return leftCount + rightCount + 1;
         }
 
-        //SUM OF NODES
-        public static int sum(Node root){
-            if(root==null)
+        // SUM OF NODES
+        public static int sum(Node root) {
+            if (root == null)
                 return 0;
-            int leftSum=sum(root.left);
-            int rightSum=sum(root.right);
-            return leftSum+rightSum+root.data;
+            int leftSum = sum(root.left);
+            int rightSum = sum(root.right);
+            return leftSum + rightSum + root.data;
         }
 
-        //DIAMETER OF TREE T.C.=O(n^2)
-        public static int diameter(Node root){
-            if(root==null)
+        // DIAMETER OF TREE T.C.=O(n^2)
+        public static int diameter(Node root) {
+            if (root == null)
                 return 0;
-            int leftDiam=diameter(root.left);
-            int leftHt=height(root.left);
-            int rightDiam=diameter(root.right);
-            int rightHt=height(root.right);
+            int leftDiam = diameter(root.left);
+            int leftHt = height(root.left);
+            int rightDiam = diameter(root.right);
+            int rightHt = height(root.right);
 
-            int selfDiam=leftHt+rightHt+1;
+            int selfDiam = leftHt + rightHt + 1;
 
-            return Math.max(Math.max(leftHt,rightHt),selfDiam);
+            return Math.max(Math.max(leftHt, rightHt), selfDiam);
+        }
+
+        // TOP VIEW OF TREE
+        static class Info {
+            Node node;
+            int hd; // Horizontal Distance
+
+            public Info(Node node, int hd) {
+                this.node = node;
+                this.hd = hd;
+            }
+        }
+
+        public static void topView(Node root) {
+            // Level Order
+            Queue<Info> q = new LinkedList<>();
+            HashMap<Integer, Node> map = new HashMap<>();
+
+            int min = 0, max = 0;
+            q.add(new Info(root, 0));
+            q.add(null);
+
+            while (!q.isEmpty()) {
+                Info curr = q.remove();
+                if (curr == null) {
+                    if (q.isEmpty())
+                        break;
+                    else
+                        q.add(null);
+                } else {
+                    if (!map.containsKey(curr.hd)) {
+                        map.put(curr.hd, curr.node);
+                    }
+                    if (curr.node.left != null) {
+                        q.add(new Info(curr.node.left, curr.hd - 1));
+                        min = Math.min(min, curr.hd - 1);
+                    }
+                    if (curr.node.right != null) {
+                        q.add(new Info(curr.node.right, curr.hd + 1));
+                        max = Math.max(max, curr.hd + 1);
+                    }
+                }
+            }
+
+            for (int i = min; i <= max; i++) {
+                System.out.print(map.get(i).data + " ");
+            }
         }
 
     }
-    // DIAMETER OF TREE T.C.=O(n)
-    //     public static class Info{
-    //         int diam;
-    //         int ht;
-    //         public Info(int diam,int ht){
-    //             this.diam=diam;
-    //             this.ht=ht;
-    //         }
-    //     }
-    //     public static Info newdiameter(Node root){
-    //         if(root==null)
-    //             return new Info(0,0);
-    //         Info leftInfo=newdiameter(root.left);
-    //         Info rightInfo=newdiameter(root.right);
-
-    //         int diam=Math.max(Math.max(leftInfo.diam,rightInfo.diam),leftInfo.ht+rightInfo.ht+1);
-    //         int ht=Math.max(leftInfo.ht+rightInfo.ht)+1;
-    //         return new Info(diam,ht);
-    //     }
 
     public static void main(String[] args) {
         int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
@@ -182,7 +212,6 @@ public class bulidTree {
         System.out.println();
         System.out.print("Count of Nodes = ");
         System.out.println(tree.count(root));
- 
 
         System.out.println();
         System.out.print("Sum of Nodes = ");
@@ -192,8 +221,8 @@ public class bulidTree {
         System.out.print("Diameter of Tree = ");
         System.out.println(tree.diameter(root));
 
-        // System.out.println();
-        // System.out.print("Diameter of Tree = ");
-        // System.out.println(newdiameter(root).diam);
+        System.out.println();
+        System.out.print("Top View of Tree = ");
+        tree.topView(root);
     }
 }
