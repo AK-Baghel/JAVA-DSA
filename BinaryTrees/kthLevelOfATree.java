@@ -24,8 +24,8 @@ public class kthLevelOfATree {
             return newNode;
         }
 
-        //Kth LEVEL OF A TREE
-        public static void kthLevelOfATree(Node root,int k){
+        //Kth LEVEL OF A TREE BY LEVEL-ORDER Traversal
+        public static void kthLevelOfATreeLO(Node root,int k){
             if(root==null)
                 return;
 
@@ -54,9 +54,22 @@ public class kthLevelOfATree {
                     if(currNode.right!=null)
                         q.add(currNode.right);
                 }
-
-
             }
+        }
+
+        //Kth LEVEL OF A TREE BY PRE-ORDER Recursion
+        public static void kthLevelOfATreePO(Node root,int k,int level){
+            if(root==null){
+                return;
+            }
+            
+            if(level==k){
+                System.out.print(root.data+", ");
+                return;
+            }
+         
+            kthLevelOfATreePO(root.left,k,level+1);
+            kthLevelOfATreePO(root.right,k,level+1);
         }
 
     }
@@ -67,9 +80,15 @@ public class kthLevelOfATree {
         BinaryTree tree=new BinaryTree();
         Node root=tree.build(nodes);
 
-        //Kth Level of a Tree
+        //Kth Level of a Tree --->Approach 1 by using LEVEL-ORDER traversal...
         int k=3;
-        System.out.print("Kth level of tree = ");
-        tree.kthLevelOfATree(root, k);
+        System.out.print("Kth level of tree by Level-Order = ");
+        tree.kthLevelOfATreeLO(root, k);
+
+        //Kth Level of a Tree --->Approach 1 by using PRE-ORDER recursion...
+        System.out.println();
+        System.out.print("Kth level of tree by Pre-Order = ");
+        tree.kthLevelOfATreePO(root, k,1);
+
     }
 }
