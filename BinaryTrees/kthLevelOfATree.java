@@ -85,7 +85,7 @@ public class kthLevelOfATree {
         System.out.print("Kth level of tree by Level-Order = ");
         tree.kthLevelOfATreeLO(root, k);
 
-        //Kth Level of a Tree --->Approach 1 by using PRE-ORDER recursion...
+        //Kth Level of a Tree --->Approach 2 by using PRE-ORDER recursion...
         System.out.println();
         System.out.print("Kth level of tree by Pre-Order = ");
         tree.kthLevelOfATreePO(root, k,1);

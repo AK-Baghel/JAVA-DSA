@@ -34,7 +34,7 @@ public class subTree {
              if(!isIdentical(root.right,subRoot.right))
                 return false;
             
-                return true;
+            return true;
         }
 
         public static boolean isSubTree(Node root,Node subRoot){
