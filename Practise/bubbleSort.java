@@ -1,3 +1,4 @@
+package Practise;
 public class bubbleSort{
     public static void main(String[] args) {
         int arr[]={56,18,2,4,1,6,3,88,0};

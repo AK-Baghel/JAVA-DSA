@@ -1,3 +1,4 @@
+package Practise;
 import java.util.*;
 public class maxSumArray{
     public static void main(String[] args) {

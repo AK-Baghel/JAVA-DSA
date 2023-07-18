@@ -1,3 +1,4 @@
+package Practise;
 public class selectionSort {
     public static void main(String[] args) {
         int arr[] = { 4, 2, 1, 5, 6, 3 };

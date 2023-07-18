@@ -1,3 +1,4 @@
+package Practise;
 public class searchInSortedMatrix {
     
     public static boolean searching(int arr[][],int key){

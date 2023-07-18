@@ -1,3 +1,4 @@
+package Practise;
 import java.util.*;
 public class linkedlist {
     public static class Node{
