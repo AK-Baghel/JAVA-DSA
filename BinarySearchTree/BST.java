@@ -34,6 +34,21 @@ public class BST {
         System.out.print(root.data + " ");
         inorder(root.right);
     }
+
+
+    //Searching of B.S.T.
+    public static boolean search(Node root,int key){
+        if(root==null)
+            return false;
+
+        if(root.data==key)
+            return true;
+
+        if(root.data>key)
+            return search(root.left, key);
+        else
+            return search(root.right, key);
+    } 
     
     public static void main(String[] args) {
         int values[]={5,1,3,4,2,7};
@@ -43,7 +58,14 @@ public class BST {
             root=insert(root,val);
         }
 
-        inorder(root);       // Printing the B.S.T.
+        // Printing the B.S.T.
+        System.out.print("Binary Search Tree Print = ");
+        inorder(root);       
+        System.out.println();
+
+        //Search in B.S.T.
+        int key=4;
+        System.out.print("Searching of a key : " + search(root,key));
         System.out.println();
     }
 }
