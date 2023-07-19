@@ -49,6 +49,42 @@ public class BST {
         else
             return search(root.right, key);
     } 
+
+
+    //Delting Node in B.S.T.
+    public static Node inorderSuccessor(Node root){
+        while(root.left!=null)
+            root=root.left;
+        return root;
+    }
+
+    public static Node delete(Node root,int val){
+        if(root.data<val){
+            root.right=delete(root.right, val);
+        }
+        else if(root.data>val){
+            root.left=delete(root.left,val);
+        }
+        else{
+
+            //case-1 Leaf Node
+            if(root.left==null && root.right==null)
+                return null;
+            
+            //case-2 have 1 Child Node
+            if(root.left==null)
+                return root.right;
+            else if(root.right==null)
+                return root.left;
+            
+            //case-3 have 2 Child Nodes
+            Node IS=inorderSuccessor(root.right);
+            root.data=IS.data;
+            root.right=delete(root.right, IS.data);
+        }
+
+        return root;
+    }
     
     public static void main(String[] args) {
         int values[]={5,1,3,4,2,7};
@@ -67,5 +103,9 @@ public class BST {
         int key=4;
         System.out.print("Searching of a key : " + search(root,key));
         System.out.println();
+
+        //Delete the Node form B.S.T.
+        root=delete(root,5);
+        inorder(root);
     }
 }
