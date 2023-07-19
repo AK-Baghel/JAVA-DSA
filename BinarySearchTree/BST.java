@@ -1,5 +1,5 @@
 package BinarySearchTree;
-
+import java.util.*;
 public class BST {
    
     public static class Node{
@@ -113,6 +113,24 @@ public class BST {
             printInRange(root.right, k1, k2);
         }
     }
+
+    //Print Root To Leaf Path
+    public static boolean printRootToLeaf(Node root,ArrayList<Integer> path){
+        if(root==null)
+            return true;
+
+        path.add(root.data);
+        
+        boolean left=printRootToLeaf(root.left, path);
+        boolean right=printRootToLeaf(root.right, path);
+
+        if(left && right){
+            System.out.println(path);
+        }
+        path.remove(path.size()-1);
+        return false;
+
+    }
     
     public static void main(String[] args) {
         int values[]={8,5,3,1,4,6,10,11,14};
@@ -139,8 +157,13 @@ public class BST {
         //   Run Delete or printInRange at once
 
         //Print B.S.T nodes in range
-        System.out.println();
+        System.out.print("Nodes in Range of 5 to 20 = ");
         printInRange(root,5,20);
+        System.out.println();
+
+        //Print Root to Leaf
+        System.out.println("Printing Root to Leaf Path-/");
+        printRootToLeaf(root,new ArrayList<>());
 
     }
 }
