@@ -131,6 +131,19 @@ public class BST {
         return false;
 
     }
+
+    //Checking Validate B.S.T
+    public static boolean isValidBST(Node root,Node min,Node max){
+        if(root==null)
+            return true;
+            
+        if(min !=null && root.data<=min.data)
+            return false;
+        else if(max !=null && root.data>=max.data)
+            return false;
+            
+        return isValidBST(root.left,min,root) && isValidBST(root.right,root,max);
+    }
     
     public static void main(String[] args) {
         int values[]={8,5,3,1,4,6,10,11,14};
@@ -162,8 +175,13 @@ public class BST {
         System.out.println();
 
         //Print Root to Leaf
-        System.out.println("Printing Root to Leaf Path-/");
+        System.out.println("Printing Root to Leaf Path -");
         printRootToLeaf(root,new ArrayList<>());
+
+        //Checking Validate B.S.T.
+        System.out.print("Validate Binary Search Tree = ");
+        System.out.println(isValidBST(root,null,null));
+        System.out.println();
 
     }
 }
