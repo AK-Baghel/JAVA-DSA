@@ -101,10 +101,10 @@ public class BST {
         // else{
         //     printInRange(root.right, k1, k2);
         // }
-        if(root.data>k1 && root.data>k2){
+        if(root.data>k2){
             printInRange(root.left, k1, k2);
         }
-        else if(root.data<k1 && root.data<k2){
+        else if(root.data<k1 ){
             printInRange(root.right, k1, k2);
         }
         else{
@@ -144,6 +144,22 @@ public class BST {
             
         return isValidBST(root.left,min,root) && isValidBST(root.right,root,max);
     }
+
+    //MIRROR OF B.S.T.
+    public static Node mirror(Node root){
+        if(root==null){
+            return null;
+        }
+
+        Node left=mirror(root.left);
+        Node right=mirror(root.right);
+
+        root.left=right;
+        root.right=left;
+
+        return root;
+    }
+    
     
     public static void main(String[] args) {
         int values[]={8,5,3,1,4,6,10,11,14};
@@ -181,6 +197,14 @@ public class BST {
         //Checking Validate B.S.T.
         System.out.print("Validate Binary Search Tree = ");
         System.out.println(isValidBST(root,null,null));
+        
+        //Mirror of B.S.T.
+        System.out.print("Mirror of Binary Search Tree = ");
+        root=mirror(root);
+        inorder(root);
+        System.out.println();
+
+        
         System.out.println();
 
     }
