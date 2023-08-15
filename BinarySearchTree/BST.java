@@ -182,6 +182,12 @@ public class BST {
         root.right=createBST(arr, mid+1,e);
         return root;
     }
+
+    //Convert B.S.T. to Balanced B.S.T.
+    // Leetcode Link = https://leetcode.com/problems/balance-a-binary-search-tree/description/
+
+    //Merge 2 BST and return sorted array, which contains 2 BSTs nodes val's
+    // https://leetcode.com/problems/all-elements-in-two-binary-search-trees/description/
     
     
     public static void main(String[] args) {
@@ -233,8 +239,13 @@ public class BST {
         System.out.print("Sorted Array to B.S.T. = ");
         preorder(newNode);
         System.out.println();
+        
+        //Convert B.S.T. to Balanced B.S.T.
+        // Leetcode Link = https://leetcode.com/problems/balance-a-binary-search-tree/description/ 
+
+        //Merge 2 BST and return sorted array, which contains 2 BSTs nodes val's
+        // https://leetcode.com/problems/all-elements-in-two-binary-search-trees/description/
+
         System.out.println();
-
-
     }
 }
